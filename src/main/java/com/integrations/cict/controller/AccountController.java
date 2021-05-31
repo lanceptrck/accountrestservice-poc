@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
     private final Logger logger = LoggerFactory.getLogger(AccountController.class);
+    private final static String ACCOUNT_DETAILS_ENDPOINT = "/converge/cxp/v1/account/account/details/";
+    private final static String PAYMENT_DETAILS_ENDPOINT = "/converge/cxp/v1/account/payment/info/";
+    private final static String OUTAGE_STATUS_ENDPOINT = "/converge/ibas/v1/crm/account/outage/status/";
+
+    @Value("${esb.host}")
+    private String host;
+
+    @Value("${esb.token}")
+    private String token;
 
     @Operation(summary = "Get account details of the provided account number")
     @ApiResponses(value = {
