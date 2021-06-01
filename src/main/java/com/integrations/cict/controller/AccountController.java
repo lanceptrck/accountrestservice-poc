@@ -1,6 +1,10 @@
 package com.integrations.cict.controller;
 
 import com.integrations.cict.dto.*;
+import com.integrations.cict.exception.AccountNotFoundException;
+import com.integrations.cict.model.Account;
+import com.integrations.cict.model.Status;
+import com.integrations.cict.utils.ResourceLibUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +46,19 @@ public class AccountController {
     })
     @GetMapping("/info/{account_no}")
     public ResponseEntity<?> getAccountDetails(@PathVariable(name="account_no", required = true) String account_no){
-        return ResponseEntity.ok().build();
+
+        Account account = ResourceLibUtil.getSampleAccount();
+
+        if(account == null){
+            throw new AccountNotFoundException("Account doesn't exist");
+        }
+
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setStatus(Status.SUCCESS);
+        accountDTO.setData(account);
+        accountDTO.setResponseCode(HttpStatus.OK.value());
+
+        return new ResponseEntity<>(accountDTO, HttpStatus.OK);
     }
 
     @Operation(summary = "Get payment details of provided account number")
