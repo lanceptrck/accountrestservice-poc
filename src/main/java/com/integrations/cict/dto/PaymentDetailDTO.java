@@ -8,7 +8,7 @@ public class PaymentDetailDTO extends GenericDTO implements Serializable {
 
     private PaymentDetail data;
 
-    public PaymentDetailDTO(){
+    public PaymentDetailDTO() {
 
     }
 

@@ -10,7 +10,7 @@ public class OldBaseDTO implements Serializable {
     private Boolean success;
     private List<Error> errors;
 
-    public OldBaseDTO(){
+    public OldBaseDTO() {
 
     }
 

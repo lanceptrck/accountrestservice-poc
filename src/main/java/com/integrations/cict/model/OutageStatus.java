@@ -6,7 +6,9 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class OutageStatus {
 
     private boolean is_online;

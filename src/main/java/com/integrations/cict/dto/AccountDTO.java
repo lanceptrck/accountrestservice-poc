@@ -10,7 +10,7 @@ public class AccountDTO extends GenericDTO implements Serializable {
 
     private Account data;
 
-    public AccountDTO(){
+    public AccountDTO() {
 
     }
 

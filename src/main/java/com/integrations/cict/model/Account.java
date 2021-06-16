@@ -12,7 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Account implements Serializable {
 
     private String module;
@@ -35,8 +37,8 @@ public class Account implements Serializable {
     private List<Subscription> subscriptions;
     private Area area;
 
-    public void addSubscription(Subscription subscription){
-        if(subscriptions == null){
+    public void addSubscription(Subscription subscription) {
+        if (subscriptions == null) {
             subscriptions = new ArrayList<>();
         }
         subscriptions.add(subscription);

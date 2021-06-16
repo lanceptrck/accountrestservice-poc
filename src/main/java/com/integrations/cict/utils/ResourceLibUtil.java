@@ -12,11 +12,11 @@ public class ResourceLibUtil {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    private ResourceLibUtil(){
+    private ResourceLibUtil() {
 
     }
 
-    public static Account getSampleAccount(){
+    public static Account getSampleAccount() {
         Account account = gson.fromJson("{\n" +
                 "      \"module\":\"ibas\",\n" +
                 "      \"company\":\"COMCL\",\n" +
@@ -60,7 +60,7 @@ public class ResourceLibUtil {
         return account;
     }
 
-    public static OutageStatus getSampleOutageStatus(){
+    public static OutageStatus getSampleOutageStatus() {
         OutageStatus status = new OutageStatus();
         status.set_online(true);
         status.setAs_of(new Date());
@@ -68,7 +68,7 @@ public class ResourceLibUtil {
         return status;
     }
 
-    public static PaymentDetail getSamplePaymentDetail(){
+    public static PaymentDetail getSamplePaymentDetail() {
 
         PaymentDetail detail = new PaymentDetail();
         detail.setCurrency_code("PHP");

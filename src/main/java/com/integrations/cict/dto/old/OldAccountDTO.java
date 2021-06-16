@@ -8,7 +8,7 @@ public class OldAccountDTO extends OldBaseDTO implements Serializable {
 
     private Account data;
 
-    public OldAccountDTO(){
+    public OldAccountDTO() {
 
     }
 

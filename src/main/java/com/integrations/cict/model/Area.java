@@ -8,7 +8,9 @@ import lombok.Setter;
 import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Area implements Serializable {
 
     private String municipality;

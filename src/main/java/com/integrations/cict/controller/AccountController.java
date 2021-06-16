@@ -1,6 +1,9 @@
 package com.integrations.cict.controller;
 
-import com.integrations.cict.dto.*;
+import com.integrations.cict.dto.AccountDTO;
+import com.integrations.cict.dto.ErrorDTO;
+import com.integrations.cict.dto.OutageStatusDTO;
+import com.integrations.cict.dto.PaymentDetailDTO;
 import com.integrations.cict.exception.AccountNotFoundException;
 import com.integrations.cict.model.Account;
 import com.integrations.cict.model.Status;
@@ -37,19 +40,19 @@ public class AccountController {
 
     @Operation(summary = "Get account details of the provided account number")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the account",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = AccountDTO.class)) }),
-            @ApiResponse(responseCode = "404", description = "Account doesn't exist",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ErrorDTO.class)) })
+            @ApiResponse(responseCode = "200", description = "Found the nearest nap box",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = AccountDTO.class))}),
+            @ApiResponse(responseCode = "406", description = "Account doesn't exist",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDTO.class))})
     })
     @GetMapping("/info/{account_no}")
-    public ResponseEntity<?> getAccountDetails(@PathVariable(name="account_no", required = true) String account_no){
+    public ResponseEntity<?> getAccountDetails(@PathVariable(name = "account_no", required = true) String account_no) {
 
         Account account = ResourceLibUtil.getSampleAccount();
 
-        if(account == null){
+        if (account == null) {
             throw new AccountNotFoundException("Account doesn't exist");
         }
 
@@ -64,31 +67,30 @@ public class AccountController {
     @Operation(summary = "Get payment details of provided account number")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the payment details of the account",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = PaymentDetailDTO.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = PaymentDetailDTO.class))}),
             @ApiResponse(responseCode = "404", description = "Account doesn't exist",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ErrorDTO.class)) })
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDTO.class))})
     })
     @GetMapping("/payment/info/{account_no}")
-    public ResponseEntity<?> getPaymentDetails(@PathVariable(name="account_no", required = true) String account_no){
+    public ResponseEntity<?> getPaymentDetails(@PathVariable(name = "account_no", required = true) String account_no) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Get outage status of given account number")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the outage details of the account",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = OutageStatusDTO.class)) }),
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = OutageStatusDTO.class))}),
             @ApiResponse(responseCode = "404", description = "Account doesn't exist",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ErrorDTO.class)) })
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDTO.class))})
     })
     @GetMapping("/outage/status/{account_no}")
-    public ResponseEntity<?> getOutageStatus(@PathVariable(name="account_no", required = true) String account_no){
+    public ResponseEntity<?> getOutageStatus(@PathVariable(name = "account_no", required = true) String account_no) {
         return ResponseEntity.ok().build();
     }
-
 
 
 }

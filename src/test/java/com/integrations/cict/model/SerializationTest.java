@@ -15,7 +15,7 @@ public class SerializationTest {
     private OldAccountDTO dto;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         subscription = null;
         area = null;
         account = null;
@@ -37,7 +37,7 @@ public class SerializationTest {
     }
 
     @Test
-    public void serialize_full_account_object_from_actual_payload(){
+    public void serialize_full_account_object_from_actual_payload() {
         account = gson.fromJson("{\n" +
                 "      \"module\":\"ibas\",\n" +
                 "      \"company\":\"COMCL\",\n" +
@@ -83,7 +83,7 @@ public class SerializationTest {
     }
 
     @Test
-    public void deserialize_whole_dto(){
+    public void deserialize_whole_dto() {
         dto = gson.fromJson("{\"success\":true,\n" +
                 "   \"errors\":[\n" +
                 "      \n" +
@@ -136,7 +136,7 @@ public class SerializationTest {
 
     }
 
-    private void loadArea(){
+    private void loadArea() {
         area = gson.fromJson("{" +
                 "\"municipality\":\"IMUS\",\n" +
                 "         \"province\":\"CAVITE\",\n" +
@@ -144,7 +144,7 @@ public class SerializationTest {
                 "      }", Area.class);
     }
 
-    private void loadSubscription(){
+    private void loadSubscription() {
         subscription = gson.fromJson("{\n" +
                 "            \"item_code\":\"00029194\",\n" +
                 "            \"serial_no\":\"05070117290001328\",\n" +
